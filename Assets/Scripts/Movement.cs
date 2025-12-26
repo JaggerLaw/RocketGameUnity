@@ -6,6 +6,15 @@ public class Movement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] InputAction thrust;
 
+    Rigidbody rb;
+
+    [SerializeField] float thrustStrength = 3f;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     void OnEnable()
     {
         thrust.Enable();
@@ -13,9 +22,16 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+       
+    }
+
+    void FixedUpdate()
+    {
         if (thrust.IsPressed())
         {
-            Debug.Log("Propel!");
+            // rb.AddRelativeForce(0, 1 * Time.fixedDeltaTime, 0);
+            Debug.Log("thrust is pressed");
+            rb.AddRelativeForce(Vector3.up * thrustStrength * Time.fixedDeltaTime );
         }
     }
 }
