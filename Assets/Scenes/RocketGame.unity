@@ -599,6 +599,7 @@ MonoBehaviour:
       m_Action: Thrust
       m_Flags: 0
     m_Flags: 0
+  thrustStrength: 100
 --- !u!4 &1330337669
 Transform:
   m_ObjectHideFlags: 0
