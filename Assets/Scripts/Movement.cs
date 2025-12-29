@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     Rigidbody rb;
 
     [SerializeField] float thrustStrength = 3f;
+    [SerializeField] float rotationStrength = 100f;
     
 
     void Start()
@@ -54,12 +55,18 @@ public class Movement : MonoBehaviour
 
         if (rotationValue == 1)
         {
-            rb.AddRelativeTorque(0, 0, -1);
+            // rb.AddRelativeTorque(Vector3.back);
+            ApplyRotation(Vector3.back);
         }
         else if (rotationValue == -1)
         {
-            rb.AddRelativeTorque(0, 0, 1);
-
+            // rb.AddRelativeTorque(Vector3.forward);
+            ApplyRotation(Vector3.forward);
         }
+    }
+
+    private void ApplyRotation(Vector3 rot)
+    {
+        transform.Rotate(rot * rotationStrength * Time.fixedDeltaTime);
     }
 }
