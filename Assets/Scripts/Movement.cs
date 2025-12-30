@@ -67,6 +67,6 @@ public class Movement : MonoBehaviour
 
     private void ApplyRotation(Vector3 rot)
     {
-        transform.Rotate(rot * rotationStrength * Time.fixedDeltaTime);
+        transform.Rotate(rotationStrength * Time.fixedDeltaTime * rot);
     }
 }
