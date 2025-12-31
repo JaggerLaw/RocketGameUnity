@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] InputAction thrust;
     [SerializeField] InputAction rotation;
+    AudioSource audioSource;
 
     Rigidbody rb;
 
@@ -16,6 +17,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -33,17 +35,24 @@ public class Movement : MonoBehaviour
     {
         Thrust();
         Rotation();
-
-       
     }
 
     private void Thrust()
     {
         if (thrust.IsPressed())
         {
+            if (!audioSource.isPlaying)
+            {    
+                //Audio source is thruster noise
+                audioSource.Play();
+            }
+
             // rb.AddRelativeForce(0, 1 * Time.fixedDeltaTime, 0);
-            Debug.Log("thrust is pressed");
             rb.AddRelativeForce(Vector3.up * thrustStrength * Time.fixedDeltaTime);
+            
+        } else
+        {
+            audioSource.Stop();
         }
     }
 
