@@ -1125,6 +1125,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 947086363205058305, guid: 734ebdf71378b80438391a53f6000bf5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8321015792944066029}
+    - targetCorrespondingSourceObject: {fileID: 947086363205058305, guid: 734ebdf71378b80438391a53f6000bf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8321015792944066033}
   m_SourcePrefab: {fileID: 100100000, guid: 734ebdf71378b80438391a53f6000bf5, type: 3}
 --- !u!1 &8321015792944066028 stripped
 GameObject:
@@ -1228,6 +1231,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8321015792944066033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8321015792944066028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1335d6cf30aa224fb3d7a5c4daf18f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,14 +1,14 @@
 using UnityEngine;
-using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-
     //add this in later with multiple audio clips
     // AudioSource destroy;
-
+    // SceneManager sceneManager;
     void Start()
     {
+        // sceneManager = GetComponent<SceneManager>();
         // destroy = GetComponent<AudioSource>();
     }
 
@@ -30,7 +30,14 @@ public class CollisionHandler : MonoBehaviour
             
             default:
             Debug.Log("Destroyed AHSHDASJDHAJ!!!!");
+            ReloadLevel();
             break; 
+        }
+
+        void ReloadLevel()
+        {
+            int currentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentScene);
         }
     }
 
