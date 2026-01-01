@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+
+    [SerializeField] float delayDeath = 1f;
+    [SerializeField] float delayNextLevel = 2f;
     //add this in later with multiple audio clips
     // AudioSource destroy;
     // SceneManager sceneManager;
@@ -17,45 +21,58 @@ public class CollisionHandler : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-            Debug.Log("Woop Woop this a friendly");
-            break; 
-            
+                Debug.Log("Woop Woop this a friendly");
+                break;
+
             case "Fuel":
-            Debug.Log("Refuled back to 100%");
-            break;
+                Debug.Log("Refuled back to 100%");
+                break;
 
             case "Finish":
-            Debug.Log("Congrats thats a win");
-            LoadNextLevel();
-            break;
-            
+                Debug.Log("Congrats thats a win");
+                StartFinishSequence();
+                break;
+
             default:
-            Debug.Log("Destroyed AHSHDASJDHAJ!!!!");
-            ReloadLevel();
-            break; 
-        }
-
-        void ReloadLevel()
-        {
-            int currentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentScene);
-        }
-
-        void LoadNextLevel()
-        {
-            int currentScene = SceneManager.GetActiveScene().buildIndex;
-            
-            int nextScene = currentScene;
-
-            if(currentScene == SceneManager.sceneCountInBuildSettings - 1)
-            {
-                nextScene = 0;
-                SceneManager.LoadScene(nextScene);
-            } else
-            {
-                SceneManager.LoadScene(nextScene + 1);
-            }
+                StartCrashSequence();
+                break;
         }
     }
 
+    void StartCrashSequence()
+    {
+        //TODO add sfx and particles
+        GetComponent<Movement>().enabled = false;
+        Invoke("ReloadLevel", delayDeath);
+    }
+
+    void StartFinishSequence()
+    {
+        //TODO add sfx and particles
+        GetComponent<Movement>().enabled = false;
+        Invoke("LoadNextLevel", delayNextLevel);
+    }
+
+    void ReloadLevel()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentScene);
+    }
+
+    void LoadNextLevel()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+
+        int nextScene = currentScene;
+
+        if (currentScene == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            nextScene = 0;
+            SceneManager.LoadScene(nextScene);
+        }
+        else
+        {
+            SceneManager.LoadScene(nextScene + 1);
+        }
+    }
 }
