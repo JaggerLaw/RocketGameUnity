@@ -7,13 +7,16 @@ public class CollisionHandler : MonoBehaviour
 
     [SerializeField] float delayDeath = 1f;
     [SerializeField] float delayNextLevel = 2f;
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip crashSound;
+    [SerializeField] AudioClip winSound;
     //add this in later with multiple audio clips
-    // AudioSource destroy;
     // SceneManager sceneManager;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         // sceneManager = GetComponent<SceneManager>();
-        // destroy = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -42,6 +45,7 @@ public class CollisionHandler : MonoBehaviour
     void StartCrashSequence()
     {
         //TODO add sfx and particles
+        audioSource.PlayOneShot(crashSound);
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", delayDeath);
     }
@@ -49,6 +53,7 @@ public class CollisionHandler : MonoBehaviour
     void StartFinishSequence()
     {
         //TODO add sfx and particles
+        audioSource.PlayOneShot(winSound);
         GetComponent<Movement>().enabled = false;
         Invoke("LoadNextLevel", delayNextLevel);
     }

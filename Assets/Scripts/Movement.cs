@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     [SerializeField] InputAction thrust;
     [SerializeField] InputAction rotation;
     AudioSource audioSource;
+    [SerializeField] AudioClip thrustSound;
 
     Rigidbody rb;
 
@@ -44,7 +45,7 @@ public class Movement : MonoBehaviour
             if (!audioSource.isPlaying)
             {    
                 //Audio source is thruster noise
-                audioSource.Play();
+                audioSource.PlayOneShot(thrustSound);
             }
 
             // rb.AddRelativeForce(0, 1 * Time.fixedDeltaTime, 0);
