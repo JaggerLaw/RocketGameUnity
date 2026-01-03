@@ -9,6 +9,11 @@ public class Movement : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip thrustSound;
 
+    [SerializeField] ParticleSystem mainThruster;
+    [SerializeField] ParticleSystem leftSideThruster;
+    [SerializeField] ParticleSystem rightSideThruster;
+    
+
     Rigidbody rb;
 
     [SerializeField] float thrustStrength = 3f;
@@ -46,6 +51,7 @@ public class Movement : MonoBehaviour
             {    
                 //Audio source is thruster noise
                 audioSource.PlayOneShot(thrustSound);
+                mainThruster.Play();
             }
 
             // rb.AddRelativeForce(0, 1 * Time.fixedDeltaTime, 0);
@@ -65,6 +71,7 @@ public class Movement : MonoBehaviour
         if (rotationValue == 1)
         {
             // rb.AddRelativeTorque(Vector3.back);
+            leftSideThruster.Play();
             ApplyRotation(Vector3.back);
         }
         else if (rotationValue == -1)
