@@ -51,8 +51,9 @@ public class Movement : MonoBehaviour
             {    
                 //Audio source is thruster noise
                 audioSource.PlayOneShot(thrustSound);
-                mainThruster.Play();
             }
+            
+            mainThruster.Play();
 
             // rb.AddRelativeForce(0, 1 * Time.fixedDeltaTime, 0);
             rb.AddRelativeForce(Vector3.up * thrustStrength * Time.fixedDeltaTime);
@@ -60,6 +61,7 @@ public class Movement : MonoBehaviour
         } else
         {
             audioSource.Stop();
+            mainThruster.Stop();
         }
     }
 
@@ -73,11 +75,16 @@ public class Movement : MonoBehaviour
             // rb.AddRelativeTorque(Vector3.back);
             leftSideThruster.Play();
             ApplyRotation(Vector3.back);
-        }
+        }        
         else if (rotationValue == -1)
         {
             // rb.AddRelativeTorque(Vector3.forward);
+            rightSideThruster.Play();
             ApplyRotation(Vector3.forward);
+        } else if (rotationValue == 0)
+        {
+            leftSideThruster.Stop();
+            rightSideThruster.Stop();
         }
     }
 

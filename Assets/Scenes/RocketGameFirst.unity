@@ -1110,29 +1110,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7447602593686401168, guid: 734ebdf71378b80438391a53f6000bf5, type: 3}
-      propertyPath: winParticles
-      value: 
-      objectReference: {fileID: 8321015792944066028}
-    - target: {fileID: 7447602593686401168, guid: 734ebdf71378b80438391a53f6000bf5, type: 3}
-      propertyPath: crashParticles
-      value: 
-      objectReference: {fileID: 8321015792944066029}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 734ebdf71378b80438391a53f6000bf5, type: 3}
---- !u!198 &8321015792944066028 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7058073151431831267, guid: 734ebdf71378b80438391a53f6000bf5, type: 3}
-  m_PrefabInstance: {fileID: 8321015792944066027}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &8321015792944066029 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4308203895125362842, guid: 734ebdf71378b80438391a53f6000bf5, type: 3}
-  m_PrefabInstance: {fileID: 8321015792944066027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
