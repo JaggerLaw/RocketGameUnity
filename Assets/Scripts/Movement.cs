@@ -47,22 +47,31 @@ public class Movement : MonoBehaviour
     {
         if (thrust.IsPressed())
         {
-            if (!audioSource.isPlaying)
-            {    
-                //Audio source is thruster noise
-                audioSource.PlayOneShot(thrustSound);
-            }
-            
-            mainThruster.Play();
-
-            // rb.AddRelativeForce(0, 1 * Time.fixedDeltaTime, 0);
-            rb.AddRelativeForce(Vector3.up * thrustStrength * Time.fixedDeltaTime);
-            
-        } else
-        {
-            audioSource.Stop();
-            mainThruster.Stop();
+            StartThrusting();
         }
+        else
+        {
+            StopThrusting();
+        }
+    }
+
+    void StartThrusting()
+    {
+        if (!audioSource.isPlaying)
+        {
+            //Audio source is thruster noise
+            audioSource.PlayOneShot(thrustSound);
+        }
+
+        mainThruster.Play();
+
+        // rb.AddRelativeForce(0, 1 * Time.fixedDeltaTime, 0);
+        rb.AddRelativeForce(Vector3.up * thrustStrength * Time.fixedDeltaTime);
+    }
+    void StopThrusting()
+    {
+        audioSource.Stop();
+        mainThruster.Stop();
     }
 
     private void Rotation()
@@ -72,23 +81,35 @@ public class Movement : MonoBehaviour
 
         if (rotationValue == 1)
         {
-            // rb.AddRelativeTorque(Vector3.back);
-            leftSideThruster.Play();
-            ApplyRotation(Vector3.back);
-        }        
+            RotateRight();
+        }
         else if (rotationValue == -1)
         {
-            // rb.AddRelativeTorque(Vector3.forward);
-            rightSideThruster.Play();
-            ApplyRotation(Vector3.forward);
-        } else if (rotationValue == 0)
+            RotateLeft();
+        }
+        else if (rotationValue == 0)
         {
-            leftSideThruster.Stop();
-            rightSideThruster.Stop();
+            StopRotation();
         }
     }
 
-    private void ApplyRotation(Vector3 rot)
+    void RotateRight()
+    {
+        leftSideThruster.Play();
+        ApplyRotation(Vector3.back);
+    }
+    void RotateLeft()
+    {
+        rightSideThruster.Play();
+        ApplyRotation(Vector3.forward);
+    }
+    void StopRotation()
+    {
+        leftSideThruster.Stop();
+        rightSideThruster.Stop();
+    }
+
+    void ApplyRotation(Vector3 rot)
     {
         rb.freezeRotation = true;
         transform.Rotate(rotationStrength * Time.fixedDeltaTime * rot);
