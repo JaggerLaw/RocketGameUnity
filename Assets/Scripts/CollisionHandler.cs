@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
@@ -15,18 +16,35 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
 
     bool isControllable = true;
+    bool isCollidable = true;
 
-    //add this in later with multiple audio clips
-    // SceneManager sceneManager;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+        RespondToDebugKeys();
+    }
+
+    void RespondToDebugKeys()
+    {
+        bool lKeyPress = Keyboard.current.lKey.wasPressedThisFrame;
+
+        if (lKeyPress)
+        {
+            LoadNextLevel();
+        } else if (Keyboard.current.cKey.wasPressedThisFrame)
+        {
+            isCollidable = !isCollidable;
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
 
-        if (!isControllable) { return; }
+        if (!isControllable || !isCollidable) { return; }
 
         switch (collision.gameObject.tag)
         {
@@ -79,7 +97,7 @@ public class CollisionHandler : MonoBehaviour
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
 
-        int nextScene = currentScene;
+        int nextScene = currentScene + 1;
 
         if (currentScene == SceneManager.sceneCountInBuildSettings - 1)
         {
@@ -88,7 +106,7 @@ public class CollisionHandler : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(nextScene + 1);
+            SceneManager.LoadScene(nextScene);
         }
     }
 }
