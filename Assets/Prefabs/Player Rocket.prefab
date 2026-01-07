@@ -140,8 +140,8 @@ MonoBehaviour:
   mainThruster: {fileID: 5515132281608536301}
   leftSideThruster: {fileID: 7422105831450303127}
   rightSideThruster: {fileID: 4992040437867287353}
-  thrustStrength: 250
-  rotationStrength: 100
+  thrustStrength: 270
+  rotationStrength: 230
 --- !u!54 &4282995192132959345
 Rigidbody:
   m_ObjectHideFlags: 0
