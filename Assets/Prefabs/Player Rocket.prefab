@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 8129756550098821192}
   - component: {fileID: 21429743425691218}
   - component: {fileID: 7447602593686401168}
-  - component: {fileID: 6077272555128429394}
+  - component: {fileID: 6981237749740674026}
   m_Layer: 0
   m_Name: Player Rocket
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
   winSound: {fileID: 8300000, guid: 2a5b61691f1d98c4284f833226563a8b, type: 3}
   crashParticles: {fileID: 4308203895125362842}
   winParticles: {fileID: 7058073151431831267}
---- !u!114 &6077272555128429394
+--- !u!114 &6981237749740674026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
 
     Rigidbody rb;
 
-    [SerializeField] float thrustStrength = 3f;
+    [SerializeField] public float thrustStrength = 3f;
     [SerializeField] float rotationStrength = 100f;
     
 
